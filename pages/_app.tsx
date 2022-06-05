@@ -13,16 +13,16 @@ const theme = extendTheme({
       600: '#757575',
       700: '#616161',
       800: '#424242',
-      900: '#212121',
+      900: '#212121'
     }
   },
   components: {
     Buttons: {
       variants: {
         link: {
-          ":focus": {
-            outline: "none",
-            boxShadow: "none"
+          ':focus': {
+            outline: 'none',
+            boxShadow: 'none'
           }
         }
       }
@@ -32,11 +32,15 @@ const theme = extendTheme({
 
 function MyApp({ Component, pageProps }) {
   return (
-   <ChakraProvider theme={theme}>
-     <PlayerLayout>
+    <ChakraProvider theme={theme}>
+      {Component.authPage ? (
         <Component {...pageProps} />
-     </PlayerLayout>
-  </ChakraProvider>
+      ) : (
+        <PlayerLayout>
+          <Component {...pageProps} />
+        </PlayerLayout>
+      )}
+    </ChakraProvider>
   )
 }
 
